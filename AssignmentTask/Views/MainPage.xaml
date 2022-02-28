@@ -1,0 +1,645 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AssignmentTask.Views.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ColorsFolder="clr-namespace:AssignmentTask.Colors"
+    xmlns:Custom="clr-namespace:AssignmentTask.Custom"
+    xmlns:FontFolder="clr-namespace:AssignmentTask.Fonts"
+    xmlns:local="clr-namespace:AssignmentTask.MarkupExtensions"
+    Title="{Binding Title}"
+    Padding="0"
+    BackgroundColor="{Binding LightBlackColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+    NavigationPage.HasNavigationBar="False">
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+
+        <Grid ColumnDefinitions="100,*" ColumnSpacing="0">
+
+            <Grid
+                Grid.Column="1"
+                ColumnDefinitions="*,Auto"
+                ColumnSpacing="0"
+                RowDefinitions="50,*">
+
+                <!--  header  -->
+                <Grid
+                    Grid.Row="0"
+                    BackgroundColor="{Binding BlackColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                    ColumnDefinitions="30,*,30,30">
+                    <Image
+                        Grid.Column="0"
+                        Aspect="AspectFill"
+                        Source="{local:PlatformResourceImage Back.jpg}">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ToolbarCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label
+                        Grid.Column="1"
+                        FontFamily="{Binding BoldFont, Source={x:Static FontFolder:RobotoFontControl.Instasnce}}"
+                        FontSize="Large"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="{Binding Title}"
+                        TextColor="{Binding WhiteColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                        VerticalOptions="CenterAndExpand" />
+                    <Image
+                        Grid.Column="2"
+                        Aspect="AspectFill"
+                        HeightRequest="30"
+                        Source="{local:PlatformResourceImage Search1.jpg}"
+                        WidthRequest="30">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SearchCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+
+
+                    <Image
+                        Grid.Column="3"
+                        Aspect="AspectFill"
+                        HeightRequest="30"
+                        Source="{local:PlatformResourceImage Filter.jpg}"
+                        WidthRequest="30">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding FilterCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Grid
+                        x:Name="SearchBar"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="4"
+                        IsVisible="{Binding SearchVisible}">
+                        <Frame
+                            Padding="10,0"
+                            BackgroundColor="{Binding BlackColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                            BorderColor="{Binding BlackColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                            CornerRadius="20"
+                            HorizontalOptions="FillAndExpand">
+                            <Grid
+                                Margin="0"
+                                Padding="0"
+                                ColumnDefinitions="Auto,*,Auto"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand">
+                                <Image
+                                    Grid.Column="0"
+                                    Aspect="AspectFit"
+                                    HeightRequest="20"
+                                    Source="{local:PlatformResourceImage Close.jpg}"
+                                    WidthRequest="20">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding HideExtention}" CommandParameter="Search" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Custom:BorderLessEntry
+                                    x:Name="SearchEntry"
+                                    Grid.Column="1"
+                                    BackgroundColor="{Binding BlackColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                                    FontFamily="{Binding RegularFont, Source={x:Static FontFolder:RobotoFontControl.Instasnce}}"
+                                    IsPassword="False"
+                                    Text="{Binding SearchText}"
+                                    TextColor="{Binding WhiteColor, Source={x:Static ColorsFolder:Colors.Instasnce}}" />
+                                <StackLayout
+                                    Grid.Column="2"
+                                    Orientation="Horizontal"
+                                    Spacing="20">
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HeightRequest="20"
+                                        Source="{local:PlatformResourceImage Refresh.jpeg}"
+                                        WidthRequest="20" />
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HeightRequest="20"
+                                        Source="{local:PlatformResourceImage Search2.jpg}"
+                                        WidthRequest="20" />
+                                </StackLayout>
+
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </Grid>
+
+                <CollectionView
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Margin="10"
+                    HorizontalOptions="FillAndExpand"
+                    ItemsSource="{Binding monitors}"
+                    VerticalOptions="FillAndExpand">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                Margin="20"
+                                Padding="10"
+                                BackgroundColor="{Binding BlackColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                                BorderColor="{Binding LightBlackColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                                HasShadow="False"
+                                HeightRequest="60">
+                                <Grid Padding="5" ColumnDefinitions="Auto,*,Auto,Auto,Auto">
+                                    <StackLayout Orientation="Horizontal" Spacing="5">
+
+                                        <BoxView
+                                            Margin="0,10"
+                                            BackgroundColor="{Binding CardColor}"
+                                            VerticalOptions="FillAndExpand"
+                                            WidthRequest="1" />
+                                        <Image
+                                            Aspect="AspectFit"
+                                            HeightRequest="70"
+                                            Source="{Binding ImagePath}"
+                                            WidthRequest="70" />
+                                    </StackLayout>
+                                    <StackLayout
+                                        Grid.Column="1"
+                                        Padding="5,0"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="CenterAndExpand">
+                                        <Label
+                                            FontFamily="{Binding BoldFont, Source={x:Static FontFolder:RobotoFontControl.Instasnce}}"
+                                            FontSize="Medium"
+                                            Text="{Binding Title}"
+                                            TextColor="{Binding WhiteColor, Source={x:Static ColorsFolder:Colors.Instasnce}}" />
+                                        <Label
+                                            FontFamily="{Binding RegularFont, Source={x:Static FontFolder:RobotoFontControl.Instasnce}}"
+                                            FontSize="Default"
+                                            Text="{Binding Name}"
+                                            TextColor="{Binding DarkGrayColor, Source={x:Static ColorsFolder:Colors.Instasnce}}" />
+                                    </StackLayout>
+                                    <Grid Grid.Column="2" HorizontalOptions="EndAndExpand">
+                                        <StackLayout
+                                            Grid.Row="0"
+                                            Padding="0,5"
+                                            HorizontalOptions="EndAndExpand"
+                                            Orientation="Horizontal"
+                                            Spacing="5">
+                                            <Label
+                                                FontFamily="{Binding RegularFont, Source={x:Static FontFolder:RobotoFontControl.Instasnce}}"
+                                                FontSize="Default"
+                                                Text="{Binding Speed}"
+                                                TextColor="{Binding WhiteColor, Source={x:Static ColorsFolder:Colors.Instasnce}}">
+                                                <Label.Triggers>
+                                                    <DataTrigger
+                                                        Binding="{Binding Speed}"
+                                                        TargetType="Label"
+                                                        Value="0">
+                                                        <Setter Property="IsVisible" Value="false" />
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
+                                            <Label
+                                                FontFamily="{Binding RegularFont, Source={x:Static FontFolder:RobotoFontControl.Instasnce}}"
+                                                FontSize="Small"
+                                                HorizontalOptions="EndAndExpand"
+                                                Rotation="270"
+                                                Text="{Binding SpeedMeasurement}"
+                                                TextColor="{Binding DarkGrayColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                                                VerticalOptions="StartAndExpand" />
+                                        </StackLayout>
+                                        <StackLayout
+                                            Grid.Row="1"
+                                            HorizontalOptions="EndAndExpand"
+                                            Orientation="Horizontal">
+                                            <Label
+                                                FontFamily="{Binding RegularFont, Source={x:Static FontFolder:RobotoFontControl.Instasnce}}"
+                                                FontSize="Default"
+                                                Text="{Binding Time, StringFormat='{0:HH:mm}'}"
+                                                TextColor="{Binding WhiteColor, Source={x:Static ColorsFolder:Colors.Instasnce}}" />
+                                            <Label
+                                                FontFamily="{Binding RegularFont, Source={x:Static FontFolder:RobotoFontControl.Instasnce}}"
+                                                FontSize="Small"
+                                                HorizontalOptions="EndAndExpand"
+                                                Rotation="270"
+                                                Text="{Binding TimeFormat}"
+                                                TextColor="{Binding DarkGrayColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                                                VerticalOptions="StartAndExpand" />
+                                        </StackLayout>
+                                    </Grid>
+                                    <Image
+                                        Grid.Column="3"
+                                        Aspect="AspectFit"
+                                        HeightRequest="40"
+                                        Source="{local:PlatformResourceImage QQ.jpg}"
+                                        WidthRequest="40" />
+                                    <Image
+                                        Grid.Column="4"
+                                        Aspect="AspectFit"
+                                        HeightRequest="70"
+                                        Source="{Binding License}"
+                                        WidthRequest="70" />
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+                <!--<Grid
+                x:Name="FilterSide"
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                ColumnDefinitions="*,270"
+                ColumnSpacing="0"
+                IsVisible="{Binding FilterVisible}">-->
+                <ScrollView
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Grid.Column="1"
+                    BackgroundColor="{Binding BlackColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                    IsVisible="{Binding FilterVisible}"
+                    WidthRequest="270">
+                    <StackLayout
+                        Padding="10"
+                        Spacing="10"
+                        VerticalOptions="FillAndExpand">
+                        <StackLayout>
+                            <Grid ColumnDefinitions="*,Auto" VerticalOptions="StartAndExpand">
+                                <Label
+                                    Grid.Column="0"
+                                    BackgroundColor="{Binding BlackColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                                    FontFamily="{Binding BoldFont, Source={x:Static FontFolder:RobotoFontControl.Instasnce}}"
+                                    FontSize="Medium"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Text="Filter"
+                                    TextColor="{Binding WhiteColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                                    VerticalOptions="Center" />
+                                <Image
+                                    Grid.Column="1"
+                                    Aspect="AspectFit"
+                                    HeightRequest="30"
+                                    Source="{local:PlatformResourceImage Refresh.jpeg}"
+                                    WidthRequest="30" />
+                            </Grid>
+
+                            <StackLayout
+                                Margin="0"
+                                Padding="10"
+                                HorizontalOptions="StartAndExpand"
+                                Orientation="Horizontal"
+                                VerticalOptions="StartAndExpand">
+                                <RadioButton
+                                    ControlTemplate="{StaticResource ThemeRadioTemplate}"
+                                    IsChecked="True"
+                                    Value="All">
+                                    <RadioButton.Content>
+                                        <Label
+                                            Margin="0,30,0,0"
+                                            FontFamily="{Binding MeduimFont, Source={x:Static FontFolder:RobotoFontControl.Instasnce}}"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Text="All"
+                                            TextColor="{Binding WhiteColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                                            VerticalOptions="Center" />
+                                    </RadioButton.Content>
+                                </RadioButton>
+                                <RadioButton ControlTemplate="{StaticResource ThemeRadioTemplate}" Value="Person">
+                                    <RadioButton.Content>
+                                        <Label
+                                            Margin="0,30,0,0"
+                                            FontFamily="{Binding MeduimFont, Source={x:Static FontFolder:RobotoFontControl.Instasnce}}"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Text="Person"
+                                            TextColor="{Binding WhiteColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                                            VerticalOptions="Center" />
+                                    </RadioButton.Content>
+                                </RadioButton>
+                                <RadioButton ControlTemplate="{StaticResource ThemeRadioTemplate}" Value="Vehicle">
+                                    <RadioButton.Content>
+                                        <Label
+                                            Margin="0,30,0,0"
+                                            FontFamily="{Binding MeduimFont, Source={x:Static FontFolder:RobotoFontControl.Instasnce}}"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Text="Vehicle"
+                                            TextColor="{Binding WhiteColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                                            VerticalOptions="Center" />
+                                    </RadioButton.Content>
+                                </RadioButton>
+                            </StackLayout>
+                        </StackLayout>
+                        <Grid ColumnDefinitions="*,*">
+                            <Label
+                                Grid.Column="0"
+                                Margin="10"
+                                FontFamily="{Binding RegularFont, Source={x:Static FontFolder:RobotoFontControl.Instasnce}}"
+                                FontSize="Medium"
+                                Text="Wanted"
+                                TextColor="{Binding WhiteColor, Source={x:Static ColorsFolder:Colors.Instasnce}}" />
+                            <Switch
+                                Grid.Column="1"
+                                IsVisible="false"
+                                Visual="Material">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="On">
+                                            <VisualState.Setters>
+                                                <Setter Property="ThumbColor" Value="yellow" />
+                                                <Setter Property="OnColor" Value="gray" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="Off">
+                                            <VisualState.Setters>
+                                                <Setter Property="ThumbColor" Value="Red" />
+                                                <Setter Property="OnColor" Value="gray" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </Switch>
+                            <!--<syncfusion:SfSwitch
+                                Grid.Column="1"
+                                HorizontalOptions="Center"
+                                IsOn="False"
+                                VerticalOptions="CenterAndExpand">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+
+                                        <VisualState x:Name="On">
+                                            <VisualState.Setters>
+                                                <Setter Property="SwitchSettings">
+                                                    <Setter.Value>
+                                                        <syncfusion:DefaultSwitchSettings
+                                                            x:TypeArguments="syncfusion:OnState"
+                                                            BusyIndicatorColor="{Binding WhiteColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                                                            ThumbBorderColor="{Binding RedColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                                                            ThumbBorderWidth="1"
+                                                            ThumbColor="{Binding RedColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                                                            ThumbCornerRadius="17.5"
+                                                            ThumbHeightRequest="35"
+                                                            ThumbWidthRequest="35"
+                                                            TrackBorderColor="{Binding LightBlackColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                                                            TrackBorderWidth="1"
+                                                            TrackColor="{Binding LightBlackColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                                                            TrackCornerRadius="20"
+                                                            TrackHeightRequest="35"
+                                                            TrackWidthRequest="75" />
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </VisualState.Setters>
+                                        </VisualState>
+
+                                        <VisualState x:Name="Off">
+                                            <VisualState.Setters>
+                                                <Setter Property="SwitchSettings">
+                                                    <Setter.Value>
+                                                        <syncfusion:DefaultSwitchSettings
+                                                            x:TypeArguments="syncfusion:OffState"
+                                                            ThumbBorderColor="{Binding LightGrayColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                                                            ThumbColor="{Binding LightGrayColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                                                            ThumbCornerRadius="17.5"
+                                                            ThumbHeightRequest="35"
+                                                            ThumbWidthRequest="35"
+                                                            TrackBorderColor="{Binding LightBlackColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                                                            TrackColor="{Binding LightBlackColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                                                            TrackCornerRadius="20"
+                                                            TrackHeightRequest="35"
+                                                            TrackWidthRequest="75" />
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </syncfusion:SfSwitch>-->
+                        </Grid>
+                        <Grid>
+                            <Frame
+                                Padding="0"
+                                BackgroundColor="{Binding BlackColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                                CornerRadius="40">
+                                <Grid Padding="0">
+                                    <Grid
+                                        Margin="0"
+                                        Padding="15,10"
+                                        RowDefinitions="Auto,Auto"
+                                        RowSpacing="0">
+
+                                        <Label
+                                            Grid.Row="0"
+                                            Margin="5,0,0,0"
+                                            FontFamily="{Binding RegularFont, Source={x:Static FontFolder:RobotoFontControl.Instasnce}}"
+                                            FontSize="Medium"
+                                            Text="Alert Type"
+                                            TextColor="{Binding DarkGrayColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                                            VerticalOptions="EndAndExpand" />
+
+                                        <Label
+                                            x:Name="PickerSelected"
+                                            Grid.Row="1"
+                                            Margin="5,0,0,0"
+                                            FontFamily="{Binding RegularFont, Source={x:Static FontFolder:RobotoFontControl.Instasnce}}"
+                                            FontSize="Medium"
+                                            Text="Request To Author..."
+                                            TextColor="{Binding WhiteColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                                            VerticalOptions="EndAndExpand" />
+
+                                        <Custom:BorderLessPicker
+                                            x:Name="Picker"
+                                            Grid.Row="1"
+                                            Margin="0,0,5,0"
+                                            FontFamily="{Binding RegularFont, Source={x:Static FontFolder:RobotoFontControl.Instasnce}}"
+                                            FontSize="Medium"
+                                            HorizontalOptions="FillAndExpand"
+                                            SelectedIndexChanged="Picker_SelectedIndexChanged"
+                                            TextColor="{Binding WhiteColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                                            TitleColor="{Binding WhiteColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                                            VerticalOptions="StartAndExpand">
+                                            <Custom:BorderLessPicker.ItemsSource>
+                                                <x:Array Type="{x:Type x:String}">
+                                                    <x:String>Request To Author1</x:String>
+                                                    <x:String>Request To Author2</x:String>
+                                                    <x:String>Request To Author3</x:String>
+                                                    <x:String>Request To Author4</x:String>
+                                                    <x:String>Request To Author5</x:String>
+                                                    <x:String>Request To Author6</x:String>
+                                                    <x:String>Request To Author7</x:String>
+                                                </x:Array>
+                                            </Custom:BorderLessPicker.ItemsSource>
+                                        </Custom:BorderLessPicker>
+                                    </Grid>
+                                    <FontFolder:FontControl
+                                        Padding="0,0,10,0"
+                                        FontSize="20"
+                                        HorizontalOptions="EndAndExpand"
+                                        Text="{x:Static FontFolder:Font_Code.ArrowRight}"
+                                        TextColor="{Binding DarkGrayColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                                        VerticalOptions="CenterAndExpand">
+                                        <FontFolder:FontControl.IsVisible>
+                                            <OnPlatform x:TypeArguments="x:Boolean">
+                                                <OnPlatform.Platforms>
+                                                    <On Platform="iOS" Value="true" />
+                                                    <On Platform="Android" Value="true" />
+                                                    <On Platform="UWP" Value="false" />
+                                                </OnPlatform.Platforms>
+                                            </OnPlatform>
+                                        </FontFolder:FontControl.IsVisible>
+                                    </FontFolder:FontControl>
+
+
+                                </Grid>
+                            </Frame>
+                        </Grid>
+
+                        <Image
+                            Margin="0,15,0,0"
+                            Aspect="AspectFit"
+                            HeightRequest="75"
+                            HorizontalOptions="FillAndExpand"
+                            Source="{local:PlatformResourceImage QQ.jpg}"
+                            VerticalOptions="FillAndExpand"
+                            WidthRequest="75" />
+                    </StackLayout>
+                </ScrollView>
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Grid.Column="0"
+                    BackgroundColor="Transparent"
+                    IsVisible="{Binding FilterVisible}">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding HideExtention}" CommandParameter="Filter" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                <!--</Grid>-->
+            </Grid>
+            <!--<Grid
+                x:Name="ToolBar"
+                Grid.Row="0"
+                Grid.RowSpan="2" Grid.Column="0"
+                ColumnDefinitions="100,*"
+                ColumnSpacing="0"
+                >-->
+            <ScrollView
+                Grid.Column="0"
+                Padding="0"
+                BackgroundColor="{Binding BlackColor, Source={x:Static ColorsFolder:Colors.Instasnce}}">
+                <StackLayout HorizontalOptions="Center" Spacing="30">
+                    <StackLayout Padding="0,20,0,0" Spacing="0">
+                        <Label Margin="0" FontFamily="{Binding RegularFont, Source={x:Static FontFolder:RobotoFontControl.Instasnce}}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding MyDate, StringFormat=' {0: HH:mm}'}" TextColor="{Binding WhiteColor, Source={x:Static ColorsFolder:Colors.Instasnce}}" />
+                                    <Span Text="{Binding MyDate, StringFormat=' {0: tt}'}" TextColor="{Binding DarkGrayColor, Source={x:Static ColorsFolder:Colors.Instasnce}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Image
+                            Margin="0,-10,0,0"
+                            Aspect="AspectFit"
+                            HeightRequest="40"
+                            Source="{local:PlatformResourceImage Dots.jpeg}"
+                            WidthRequest="60" />
+                    </StackLayout>
+                    <Image
+                        HeightRequest="40"
+                        Source="{local:PlatformResourceImage NotificationIcon.jpg}"
+                        WidthRequest="40" />
+                    <Image
+                        Aspect="AspectFit"
+                        HeightRequest="60"
+                        Source="{local:PlatformResourceImage Recycle.jpeg}"
+                        WidthRequest="60" />
+                    <Image
+                        Aspect="AspectFit"
+                        HeightRequest="45"
+                        Source="{local:PlatformResourceImage Circle.jpeg}"
+                        WidthRequest="45" />
+                    <Image
+                        Aspect="AspectFit"
+                        HeightRequest="45"
+                        Source="{local:PlatformResourceImage SearchIcon.jpeg}"
+                        WidthRequest="45" />
+                    <Image
+                        Aspect="AspectFit"
+                        HeightRequest="45"
+                        Source="{local:PlatformResourceImage Star.jpeg}"
+                        WidthRequest="45" />
+                    <Image
+                        Margin="0,20,0,0"
+                        Aspect="AspectFit"
+                        HeightRequest="40"
+                        Source="{local:PlatformResourceImage Shabk.jpeg}"
+                        WidthRequest="40" />
+                </StackLayout>
+            </ScrollView>
+            <!--<StackLayout
+                    Grid.Column="1"
+                    Background="{Binding BlackColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                    Opacity="0.7">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding HideExtention}" CommandParameter="ToolBar" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>-->
+            <!--</Grid>-->
+        </Grid>
+
+    </Grid>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Color x:Key="LightRadioButtonColor">#000000</Color>
+            <Color x:Key="DarkRadioButtonColor">#000000</Color>
+
+            <ControlTemplate x:Key="ThemeRadioTemplate">
+                <Frame
+                    Padding="0"
+                    BackgroundColor="{AppThemeBinding Dark={StaticResource DarkRadioButtonColor},
+                                                      Light={StaticResource LightRadioButtonColor}}"
+                    HasShadow="False"
+                    HeightRequest="80"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Start"
+                    WidthRequest="70">
+                    <Grid
+                        Margin="0"
+                        Padding="4"
+                        WidthRequest="50">
+                        <Grid
+                            HeightRequest="40"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="Start"
+                            WidthRequest="40">
+                            <Ellipse
+                                Fill="{Binding VeryLightBlackColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                                HeightRequest="38"
+                                HorizontalOptions="Center"
+                                Stroke="{Binding DarkGrayColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                                StrokeThickness="2"
+                                VerticalOptions="Center"
+                                WidthRequest="38" />
+                            <Ellipse
+                                x:Name="Check"
+                                BackgroundColor="Transparent"
+                                Fill="{Binding GreenColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                                HeightRequest="30"
+                                HorizontalOptions="Center"
+                                Stroke="{Binding GreenColor, Source={x:Static ColorsFolder:Colors.Instasnce}}"
+                                StrokeThickness="0"
+                                VerticalOptions="Center"
+                                WidthRequest="30" />
+                        </Grid>
+                        <!--  This enables us to put in dynamic content  -->
+                        <ContentPresenter />
+                    </Grid>
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroupList>
+                            <VisualStateGroup x:Name="CheckedStates">
+                                <VisualState x:Name="Checked">
+                                    <VisualState.Setters>
+                                        <Setter Property="BorderColor" Value="{Binding BlackColor, Source={x:Static ColorsFolder:Colors.Instasnce}}" />
+                                        <Setter TargetName="Check" Property="Opacity" Value="1" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Unchecked">
+                                    <VisualState.Setters>
+                                        <Setter Property="BorderColor" Value="{Binding BlackColor, Source={x:Static ColorsFolder:Colors.Instasnce}}" />
+                                        <Setter TargetName="Check" Property="Opacity" Value="0" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateGroupList>
+                    </VisualStateManager.VisualStateGroups>
+                </Frame>
+            </ControlTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+</ContentPage>

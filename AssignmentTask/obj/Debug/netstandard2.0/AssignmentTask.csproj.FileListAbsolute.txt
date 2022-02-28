@@ -1,0 +1,13 @@
+C:\Users\hend.AbdElAal\source\repos\AssignmentTask\AssignmentTask\bin\Debug\netstandard2.0\AssignmentTask.deps.json
+C:\Users\hend.AbdElAal\source\repos\AssignmentTask\AssignmentTask\bin\Debug\netstandard2.0\AssignmentTask.dll
+C:\Users\hend.AbdElAal\source\repos\AssignmentTask\AssignmentTask\bin\Debug\netstandard2.0\AssignmentTask.pdb
+C:\Users\hend.AbdElAal\source\repos\AssignmentTask\AssignmentTask\obj\Debug\netstandard2.0\AssignmentTask.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hend.AbdElAal\source\repos\AssignmentTask\AssignmentTask\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\hend.AbdElAal\source\repos\AssignmentTask\AssignmentTask\obj\Debug\netstandard2.0\Views\MainPage.xaml.g.cs
+C:\Users\hend.AbdElAal\source\repos\AssignmentTask\AssignmentTask\obj\Debug\netstandard2.0\AssignmentTask.AssemblyInfoInputs.cache
+C:\Users\hend.AbdElAal\source\repos\AssignmentTask\AssignmentTask\obj\Debug\netstandard2.0\AssignmentTask.AssemblyInfo.cs
+C:\Users\hend.AbdElAal\source\repos\AssignmentTask\AssignmentTask\obj\Debug\netstandard2.0\AssignmentTask.csproj.CoreCompileInputs.cache
+C:\Users\hend.AbdElAal\source\repos\AssignmentTask\AssignmentTask\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\hend.AbdElAal\source\repos\AssignmentTask\AssignmentTask\obj\Debug\netstandard2.0\AssignmentTask.dll
+C:\Users\hend.AbdElAal\source\repos\AssignmentTask\AssignmentTask\obj\Debug\netstandard2.0\AssignmentTask.pdb
+C:\Users\hend.AbdElAal\source\repos\AssignmentTask\AssignmentTask\obj\Debug\netstandard2.0\AssignmentTask.csproj.AssemblyReference.cache

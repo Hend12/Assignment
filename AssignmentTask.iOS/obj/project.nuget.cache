@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "opTj97m5oHQE8U7yV+1dS9AxY9E94ZI/UvnS8voBDLxt9UneemWf9yeo0Cmmq828amXVddu700ge26si6iqP2w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\hend.AbdElAal\\source\\repos\\AssignmentTask\\AssignmentTask.iOS\\AssignmentTask.iOS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\hend.AbdElAal\\.nuget\\packages\\dryioc.dll\\4.5.0\\dryioc.dll.4.5.0.nupkg.sha512",
+    "C:\\Users\\hend.AbdElAal\\.nuget\\packages\\prism.core\\8.0.0.1909\\prism.core.8.0.0.1909.nupkg.sha512",
+    "C:\\Users\\hend.AbdElAal\\.nuget\\packages\\prism.dryioc.forms\\8.0.0.1909\\prism.dryioc.forms.8.0.0.1909.nupkg.sha512",
+    "C:\\Users\\hend.AbdElAal\\.nuget\\packages\\prism.forms\\8.0.0.1909\\prism.forms.8.0.0.1909.nupkg.sha512",
+    "C:\\Users\\hend.AbdElAal\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\hend.AbdElAal\\.nuget\\packages\\system.reflection.emit.lightweight\\4.3.0\\system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
+    "C:\\Users\\hend.AbdElAal\\.nuget\\packages\\xamarin.essentials\\1.7.1\\xamarin.essentials.1.7.1.nupkg.sha512",
+    "C:\\Users\\hend.AbdElAal\\.nuget\\packages\\xamarin.essentials.interfaces\\1.5.3.2\\xamarin.essentials.interfaces.1.5.3.2.nupkg.sha512",
+    "C:\\Users\\hend.AbdElAal\\.nuget\\packages\\xamarin.forms\\5.0.0.2337\\xamarin.forms.5.0.0.2337.nupkg.sha512"
+  ],
+  "logs": []
+}
